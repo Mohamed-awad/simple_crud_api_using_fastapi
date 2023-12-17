@@ -1,7 +1,8 @@
 from fastapi import FastAPI, HTTPException, Request
-from slowapi.errors import RateLimitExceeded
 from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
+
 from models import Product
 
 limiter = Limiter(key_func=get_remote_address)
@@ -11,7 +12,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # In-memory data store for
-products_list = []
+products_list: list[Product] = []
 
 # auto generate id
 next_id = 1
@@ -25,7 +26,7 @@ async def list_products(request: Request, skip: int = 0, limit: int = 10):
         "skip": skip,
         "limit": limit,
         "total": len(products_list),
-        "products": products_list[skip:skip + limit]
+        "products": products_list[skip: skip + limit],
     }
 
 
@@ -34,7 +35,7 @@ async def get_product(product_id: int):
     """endpoint for retrieve product."""
     for product in products_list:
         if product.id == product_id:
-            return {"product": product.dict()}
+            return {"product": product.model_dump()}
     raise HTTPException(status_code=404, detail="Product not found")
 
 
@@ -55,7 +56,10 @@ async def update_product(product_id: int, updated_product: Product):
     for index, product in enumerate(products_list):
         if product.id == product_id:
             products_list[index] = updated_product
-            return {"message": "Product updated successfully", "product": updated_product.model_dump()}
+            return {
+                "message": "Product updated successfully",
+                "product": updated_product.model_dump(),
+            }
     raise HTTPException(status_code=404, detail="Product not found")
 
 
@@ -65,6 +69,8 @@ async def delete_product(product_id: int):
     for index, product in enumerate(products_list):
         if product.id == product_id:
             deleted_product = products_list.pop(index)
-            return {"message": "Product deleted successfully", "deleted_product": deleted_product.dict()}
+            return {
+                "message": "Product deleted successfully",
+                "deleted_product": deleted_product.dict(),
+            }
     raise HTTPException(status_code=404, detail="Product not found")
-

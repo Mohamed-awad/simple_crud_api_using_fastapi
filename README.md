@@ -44,3 +44,7 @@ endpoints to create, read, update, and delete items(products) from a dataset.
 
 ###### delete product
 ![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/delete_product.png)
+
+
+### Postman Collection File
+[postman collection json file](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/postman.postman_collection.json)
