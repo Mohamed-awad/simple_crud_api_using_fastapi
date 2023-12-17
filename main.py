@@ -26,7 +26,7 @@ async def list_products(request: Request, skip: int = 0, limit: int = 10):
         "skip": skip,
         "limit": limit,
         "total": len(products_list),
-        "products": products_list[skip: skip + limit],
+        "products": products_list[skip : skip + limit],
     }
 
 
@@ -71,6 +71,6 @@ async def delete_product(product_id: int):
             deleted_product = products_list.pop(index)
             return {
                 "message": "Product deleted successfully",
-                "deleted_product": deleted_product.dict(),
+                "deleted_product": deleted_product.model_dump(),
             }
     raise HTTPException(status_code=404, detail="Product not found")
