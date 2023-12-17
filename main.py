@@ -18,7 +18,7 @@ next_id = 1
 
 
 @app.get("/products")
-@limiter.limit("15/minute")
+@limiter.limit("10/minute")
 async def list_products(request: Request, skip: int = 0, limit: int = 10):
     """endpoint for list products."""
     return {
