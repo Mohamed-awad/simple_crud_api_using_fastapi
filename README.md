@@ -31,16 +31,16 @@ endpoints to create, read, update, and delete items(products) from a dataset.
 ### photo of apis
 
 ###### create new product
-![alt text]()
+![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/create_product.png)
 
 ###### product Detail
-![alt text]()
+![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/product_detail.png)
 
 ###### list products
-![alt text]()
+![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/list_products.png)
 
 ###### update product
-![alt text]()
+![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/update_product.png)
 
 ###### delete product
-![alt text]()
+![alt text](https://github.com/Mohamed-awad/simple_crud_api_using_fastapi/blob/main/images/delete_product.png)
